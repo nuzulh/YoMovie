@@ -1,8 +1,8 @@
 export const STACKS = {
-  SHARED: 'SharedStack',
-  HOME: 'HomeStack',
-  EXPLORE: 'ExploreStack',
-  FAVORITES: 'FavoritesStack',
+  SHARED: 'Shared',
+  HOME: 'Home',
+  EXPLORE: 'Explore',
+  FAVORITES: 'Favorites',
 };
 
 export const SHARED_STACKS = {
