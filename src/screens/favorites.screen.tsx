@@ -8,7 +8,7 @@ export function FavoritesScreen() {
   const favorites = useFavoriteStore(state => state.favorites);
 
   return (
-    <View style={commonStyles.container}>
+    <View>
       <Text style={commonStyles.textHeading}>Your Favorite Movies</Text>
       <FlatList
         horizontal

@@ -3,6 +3,8 @@ import { StyleSheet } from 'react-native';
 export const cardStyle = StyleSheet.create({
   movieCardContainer: {
     gap: 14,
+    paddingHorizontal: 16,
+    paddingBottom: 16,
   },
   movieCard: {
     width: 200,

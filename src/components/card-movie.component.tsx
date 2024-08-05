@@ -6,6 +6,7 @@ import { parseRating, QUERY_KEY_MOVIE, SHARED_STACKS } from '../helpers';
 import { useFavoriteActions, useFavoriteStore } from '../stores';
 import { useQueryClient } from 'react-query';
 import { Heart } from 'lucide-react-native';
+import { commonStyles } from '../styles';
 
 type Props = {
   data: {
@@ -36,8 +37,10 @@ export function CardMovie({ data }: Props) {
   return (
     <TouchableOpacity
       key={data.id}
-      style={cardStyle.movieCard}
-      onPress={() => navigate(SHARED_STACKS.MOVIE_DETAILS_SCREEN)}
+      style={[cardStyle.movieCard, commonStyles.shadow]}
+      onPress={() => navigate(SHARED_STACKS.MOVIE_DETAILS_SCREEN, {
+        movieId: data.id,
+      })}
     >
       <Image
         source={{ uri: data.imageUrl }}

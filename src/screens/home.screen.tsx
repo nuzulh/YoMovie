@@ -5,10 +5,12 @@ import { useGetPopularMovies } from '../hooks';
 import { CardMovie } from '../components';
 
 export function HomeScreen() {
-  const { data } = useGetPopularMovies();
+  const { data, isLoading } = useGetPopularMovies();
+
+  if (isLoading) return <Text>Loading...</Text>;
 
   return (
-    <View style={commonStyles.container}>
+    <View>
       <Text style={commonStyles.textHeading}>Popular Movies</Text>
       <FlatList
         horizontal

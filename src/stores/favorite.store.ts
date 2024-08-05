@@ -42,7 +42,7 @@ export const useFavoriteStore = create<FavoriteMovieStore, any>(
     {
       name: 'YoMovieFavorites',
       storage: createJSONStorage(() => AsyncStorage),
-      partialize: prev => prev.favorites,
+      partialize: state => state.favorites,
     },
   ),
 );
