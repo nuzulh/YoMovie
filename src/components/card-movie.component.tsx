@@ -1,43 +1,22 @@
 import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
-import { cardStyle } from '../styles/card.style';
+import { cardStyles } from '../styles/card.style';
 import { useAppNavigation } from '../hooks';
-import { parseRating, QUERY_KEY_MOVIE, SHARED_STACKS } from '../helpers';
-import { useFavoriteActions, useFavoriteStore } from '../stores';
-import { useQueryClient } from 'react-query';
-import { Heart } from 'lucide-react-native';
+import { MovieMinimal, parseRating, SHARED_STACKS } from '../helpers';
+import { ButtonFav } from './button-fav.component';
 import { commonStyles } from '../styles';
 
 type Props = {
-  data: {
-    id: number;
-    title: string;
-    imageUrl: string;
-    rating: number;
-    createdAt: string;
-    isFavorite: boolean;
-  };
+  data: MovieMinimal;
 };
 
 export function CardMovie({ data }: Props) {
   const { navigate } = useAppNavigation();
-  const favorites = useFavoriteStore(state => state.favorites);
-  const { add, remove } = useFavoriteActions();
-  const queryClient = useQueryClient();
-
-  const toggleFavorite = (item: Props['data']) => {
-    const favoriteIds = favorites.map(x => x.id);
-
-    if (favoriteIds.includes(item.id)) remove(item.id);
-    else add(item);
-
-    queryClient.invalidateQueries({ queryKey: QUERY_KEY_MOVIE.GET });
-  };
 
   return (
     <TouchableOpacity
       key={data.id}
-      style={[cardStyle.movieCard, commonStyles.shadow]}
+      style={[cardStyles.movieCard, commonStyles.shadow]}
       onPress={() => navigate(SHARED_STACKS.MOVIE_DETAILS_SCREEN, {
         movieId: data.id,
       })}
@@ -45,18 +24,16 @@ export function CardMovie({ data }: Props) {
       <Image
         source={{ uri: data.imageUrl }}
         resizeMode="cover"
-        style={cardStyle.movieCardImage}
+        style={cardStyles.movieCardImage}
         alt=""
       />
-      <View style={cardStyle.movieCardContent}>
+      <View style={cardStyles.movieCardContent}>
         <Text>{parseRating(data.rating)} / 10</Text>
-        <Text style={cardStyle.textTitle} numberOfLines={2}>
+        <Text style={cardStyles.textTitle} numberOfLines={2}>
           {data.title}
         </Text>
       </View>
-      <TouchableOpacity onPress={() => toggleFavorite(data)} style={cardStyle.buttonFavorite}>
-        <Heart stroke='red' fill={data.isFavorite ? 'red' : ''} />
-      </TouchableOpacity>
+      <ButtonFav data={data} />
     </TouchableOpacity>
   );
 }

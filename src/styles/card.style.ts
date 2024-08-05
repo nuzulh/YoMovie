@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const cardStyle = StyleSheet.create({
+export const cardStyles = StyleSheet.create({
   movieCardContainer: {
     gap: 14,
     paddingHorizontal: 16,

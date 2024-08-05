@@ -28,7 +28,6 @@ export type MovieMinimal = {
   title: string;
   imageUrl: string;
   rating: number;
-  createdAt: string;
   isFavorite: boolean;
 };
 

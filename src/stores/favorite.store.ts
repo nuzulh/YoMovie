@@ -4,10 +4,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MAX_FAVORITES, MovieMinimal } from '../helpers';
 import Toast from 'react-native-toast-message';
 
-type FavoriteMovie = Omit<MovieMinimal, 'isFavorite'>;
+type FavoriteMovie = Omit<MovieMinimal, 'isFavorite'> & { createdAt: Date };
 
 type FavoriteMovieActions = {
-  add: (movie: FavoriteMovie) => void;
+  add: (movie: Omit<FavoriteMovie, 'createdAt'>) => void;
   remove: (id: FavoriteMovie['id']) => void;
 };
 
@@ -30,7 +30,16 @@ export const useFavoriteStore = create<FavoriteMovieStore, any>(
               return prev;
             }
 
-            return { ...prev, favorites: [...prev.favorites, movie] };
+            return {
+              ...prev,
+              favorites: [
+                ...prev.favorites,
+                {
+                  ...movie,
+                  createdAt: new Date(),
+                },
+              ],
+            };
           }),
         remove: id =>
           set(prev => ({

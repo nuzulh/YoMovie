@@ -7,3 +7,12 @@ export function parseUrlSearchParams(searchParams: Record<string, string>) {
     .map(key => `${key}=${searchParams[key]}`)
     .join('&');
 }
+
+export function formatDate(
+  date: Date,
+  options: Intl.DateTimeFormatOptions = {
+    dateStyle: 'long',
+  },
+) {
+  return new Intl.DateTimeFormat('en-EN', options).format(date);
+}

@@ -1,6 +1,6 @@
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
-import { cardStyle, commonStyles } from '../styles';
+import { ScrollView, Text, View } from 'react-native';
+import { cardStyles, commonStyles } from '../styles';
 import { useGetPopularMovies } from '../hooks';
 import { CardMovie } from '../components';
 
@@ -12,13 +12,13 @@ export function HomeScreen() {
   return (
     <View>
       <Text style={commonStyles.textHeading}>Popular Movies</Text>
-      <FlatList
+      <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={cardStyle.movieCardContainer}
-        data={data}
-        renderItem={({ item }) => <CardMovie data={item} />}
-      />
+        contentContainerStyle={cardStyles.movieCardContainer}
+      >
+        {(data || []).map(item => <CardMovie key={item.id} data={item} />)}
+      </ScrollView>
     </View>
   );
 }

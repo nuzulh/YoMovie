@@ -9,7 +9,7 @@ export async function getMovieDetails(id: number) {
   const favoriteIds = useFavoriteStore.getState().favorites.map(x => x.id);
   const result: MovieDetails = {
     ...response,
-    poster_path: BASE_IMG_URL + response.poster_path,
+    poster_path: BASE_IMG_URL.replace('w200', 'w500') + response.poster_path,
     is_favorite: favoriteIds.includes(response.id),
   };
 
