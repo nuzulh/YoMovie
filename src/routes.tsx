@@ -72,7 +72,7 @@ function FavoritesRoute() {
 }
 
 function AppNavigator() {
-  const favorites = useFavoriteStore(state => state.favorites);
+  const { favorites } = useFavoriteStore();
 
   return (
     <AppTab.Navigator>
@@ -89,7 +89,7 @@ function AppNavigator() {
   );
 }
 
-export function Route() {
+export function Routes() {
   return (
     <NavigationContainer>
       <AppNavigator />
