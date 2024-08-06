@@ -26,7 +26,7 @@ export function ButtonFav({ data }: Props) {
 
   return (
     <TouchableOpacity onPress={() => toggleFavorite(data)} style={cardStyles.buttonFavorite}>
-      <Heart stroke='red' fill={data.isFavorite ? 'red' : ''} />
+      <Heart stroke='red' fill={data.isFavorite ? 'red' : 'transparent'} />
     </TouchableOpacity>
   );
 }

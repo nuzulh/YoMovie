@@ -76,19 +76,21 @@ function AppNavigator() {
         name={STACKS.HOME}
         component={HomeRoute}
         options={{
-          tabBarIcon: ({ focused }) => <Home strokeWidth={focused ? 2.5 : 1.5} />,
+          tabBarIcon: ({ focused }) => <Home color={focused ? 'black' : 'grey'} />,
         }}
       />
       <AppTab.Screen
         name={STACKS.EXPLORE}
         component={ExploreRoute}
-        options={{ tabBarIcon: ({ focused }) => <Compass strokeWidth={focused ? 2.5 : 1.5} /> }}
+        options={{
+          tabBarIcon: ({ focused }) => <Compass color={focused ? 'black' : 'grey'} />,
+        }}
       />
       <AppTab.Screen
         name={STACKS.FAVORITES}
         component={FavoritesRoute}
         options={{
-          tabBarIcon: ({ focused }) => <Heart strokeWidth={focused ? 2.5 : 1.5} />,
+          tabBarIcon: ({ focused }) => <Heart color={focused ? 'black' : 'grey'} />,
           tabBarBadge: !favorites.length ? undefined : favorites.length,
         }}
       />
