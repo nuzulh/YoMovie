@@ -1,8 +1,8 @@
-import { BASE_IMG_URL, movieFetcher, MovieMinimal, PopularMovieResponse } from '../../helpers';
-import { useFavoriteStore } from '../../stores';
+import { BASE_IMG_URL, movieFetcher, MovieMinimal, ListMovieResponse } from '../../../helpers';
+import { useFavoriteStore } from '../../../stores';
 
 export async function getPopularMovies() {
-  const response = await movieFetcher<PopularMovieResponse>(`/movie/popular`);
+  const response = await movieFetcher<ListMovieResponse>(`/movie/popular`);
 
   if (!response) return [];
 

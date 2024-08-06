@@ -16,7 +16,7 @@ export type MovieSpec = {
   is_favorite: boolean;
 };
 
-export type PopularMovieResponse = {
+export type ListMovieResponse = {
   page: number;
   results: MovieSpec[];
   total_pages: number;

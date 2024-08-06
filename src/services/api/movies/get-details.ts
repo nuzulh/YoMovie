@@ -1,5 +1,5 @@
-import { BASE_IMG_URL, MovieDetails, movieFetcher } from '../../helpers';
-import { useFavoriteStore } from '../../stores';
+import { BASE_IMG_URL, MovieDetails, movieFetcher } from '../../../helpers';
+import { useFavoriteStore } from '../../../stores';
 
 export async function getMovieDetails(id: number) {
   const response = await movieFetcher<MovieDetails>(`/movie/${id}`);

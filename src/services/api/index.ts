@@ -1,2 +1,1 @@
-export * from './get-popular-movies';
-export * from './get-movie-details';
+export * from './movies';
