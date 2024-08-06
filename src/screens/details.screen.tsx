@@ -6,9 +6,9 @@ import { formatDate } from '../helpers';
 
 export function DetailsScreen() {
   const { movieId } = useRouteParams<{ movieId: number }>();
-  const { data, isLoading } = useGetMovieDetails(movieId);
+  const { data, isFetching } = useGetMovieDetails(movieId);
 
-  if (isLoading) return <Text>Loading...</Text>;
+  if (isFetching) return <Text>Loading...</Text>;
   if (!data) return <Text>Movie not found!</Text>;
 
   return (
@@ -32,11 +32,13 @@ export function DetailsScreen() {
           {data.genres.map(genre => <Chip key={genre.id} label={genre.name} />)}
         </View>
         <Text style={styles.description}>{data.overview}</Text>
-        <View style={styles.releasedDateContainer}>
-          <Text style={styles.releasedDate}>
-            Released at {formatDate(new Date(data.release_date))}
-          </Text>
-        </View>
+        {data.release_date && (
+          <View style={styles.releasedDateContainer}>
+            <Text style={styles.releasedDate}>
+              Released at {formatDate(new Date(data.release_date))}
+            </Text>
+          </View>
+        )}
       </View>
     </ScrollView>
   );

@@ -3,7 +3,7 @@ import { parseUrlSearchParams } from './utils';
 
 export async function movieFetcher<T extends unknown>(
   path: string,
-  searchParams: Record<string, string> = {},
+  searchParams = {},
 ) {
   try {
     const urlSearchParams = parseUrlSearchParams({

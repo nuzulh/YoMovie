@@ -21,7 +21,7 @@ export function ButtonFav({ data }: Props) {
     if (favoriteIds.includes(item.id)) remove(item.id);
     else add(item);
 
-    queryClient.invalidateQueries({ queryKey: QUERY_KEY_MOVIE.GET });
+    queryClient.invalidateQueries(QUERY_KEY_MOVIE.GET);
   };
 
   return (

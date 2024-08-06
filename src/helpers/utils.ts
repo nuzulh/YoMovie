@@ -4,7 +4,7 @@ export function parseRating(rating: number, decimal = 1) {
 
 export function parseUrlSearchParams(searchParams: Record<string, string>) {
   return '?' + Object.keys(searchParams)
-    .map(key => `${key}=${searchParams[key]}`)
+    .map(key => searchParams[key] ? `${key}=${searchParams[key]}` : '')
     .join('&');
 }
 
