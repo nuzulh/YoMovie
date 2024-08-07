@@ -8,9 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { useAppNavigation, useDebounceValue } from '../hooks';
-import { useQuery } from 'react-query';
-import { getSearchMovie, SearchQuery } from '../services';
+import { useAppNavigation, useDebounceValue, useGetSearchMovies } from '../hooks';
+import { SearchQuery } from '../services';
 import { parseRating, SHARED_STACKS } from '../helpers';
 import { commonStyles } from '../styles';
 
@@ -21,13 +20,7 @@ export function ExploreScreen() {
   });
   const debouncedSearch = useDebounceValue(filter.query);
   const { navigate } = useAppNavigation();
-
-  const { data, isFetching, refetch } = useQuery({
-    queryKey: 'SEARCH',
-    queryFn: () => getSearchMovie({ query: debouncedSearch }),
-    enabled: false,
-    keepPreviousData: true,
-  });
+  const { data, isFetching, refetch } = useGetSearchMovies(filter);
 
   useEffect(() => {
     refetch();
