@@ -1,8 +1,10 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { RefreshControl, ScrollView, Text } from 'react-native';
 import { cardStyles, commonStyles } from '../styles';
 import { useGetPopularMovies, useGetTodayTrendingMovies } from '../hooks';
 import { CardMovie } from '../components';
+import { useQueryClient } from 'react-query';
+import { QUERY_KEY_MOVIE } from '../helpers';
 
 export function HomeScreen() {
   const {
@@ -13,11 +15,19 @@ export function HomeScreen() {
     data: trendingData,
     isLoading: trendingLoading,
   } = useGetTodayTrendingMovies();
+  const queryClient = useQueryClient();
 
   if (popularLoading || trendingLoading) return <Text>Loading...</Text>;
 
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl
+          refreshing={popularLoading || trendingLoading}
+          onRefresh={() => queryClient.invalidateQueries(QUERY_KEY_MOVIE.GET)}
+        />
+      }
+    >
       <Text style={commonStyles.textHeading}>Popular Movies</Text>
       <ScrollView
         horizontal
