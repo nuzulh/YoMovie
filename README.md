@@ -54,8 +54,10 @@ Done 🚀. You can now start your development.
 
 ## Screenshots
 
-|<img src="assets/home.PNG" align="center" />|<img src="assets/explore.PNG" align="center" />|
-| HOME | EXPLORE |
+| <img src="assets/home.PNG" align="center" /> | <img src="assets/explore.PNG" align="center" /> |
+| :------------------------------------------: | :---------------------------------------------: |
+|                     HOME                     |                     EXPLORE                     |
 
-|<img src="assets/favorites.PNG" align="center" />|<img src="assets/details.PNG" align="center" />|
-| FAVORITES | DETAILS |
+| <img src="assets/favorites.PNG" align="center" /> | <img src="assets/details.PNG" align="center" /> |
+| :-----------------------------------------------: | :---------------------------------------------: |
+|                     FAVORITES                     |                     DETAILS                     |
